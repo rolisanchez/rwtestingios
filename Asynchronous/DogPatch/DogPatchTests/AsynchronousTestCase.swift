@@ -109,4 +109,59 @@ final class AsynchronousTestCase: XCTestCase {
     
     waitForExpectations(timeout: timeout)
   }
+  
+  
+  func test_decodeDogtors() {
+    struct OrthopedicDogtor: Decodable {
+      let id: String
+      let sellerID: String
+      let about: String
+      let birthday: Date
+      let breed: String
+      let breederRating: Double
+      let cost: Decimal
+      let created: Date
+      let imageURL: URL
+      let name: String
+      
+      let bones: [Int]
+    }
+    
+    let url = URL(string: "https://dogpatchserver.herokuapp.com/api/v1/dogs")!
+    
+    URLSession.shared.dataTask(with: url) { data, response, error in
+      // Fulfill MUST be called at the end
+      defer { self.expectation.fulfill() }
+      
+      XCTAssertNil(error)
+      
+      do {
+        let response = try XCTUnwrap(response as? HTTPURLResponse)
+        XCTAssertEqual(response.statusCode, 200)
+        // Alternative 1
+//        let data = try XCTUnwrap(data)
+//        XCTAssertThrowsError(
+//          try JSONDecoder().decode([OrthopedicDogtor].self, from: data)
+//        ) { error in
+//          guard case DecodingError.keyNotFound(let key, _) = error else {
+//            XCTFail("\(error)")
+//            return
+//          }
+//          XCTAssertEqual(key.stringValue, "bones")
+//        }
+        // Alternative 2 + inside catch
+        _  = try JSONDecoder().decode([OrthopedicDogtor].self, from: try XCTUnwrap(data))
+      }
+      catch {
+        guard case DecodingError.keyNotFound(let key, _) = error else {
+          XCTFail("\(error)")
+          return
+        }
+        XCTAssertEqual(key.stringValue, "bones")
+      }
+    }
+    .resume()
+    
+    waitForExpectations(timeout: timeout)
+  }
 }
