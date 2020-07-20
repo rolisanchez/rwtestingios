@@ -29,6 +29,7 @@
 		95C82A1A233BC7AD00CA2CF9 /* UIViewController+NibCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C82A18233BC7AD00CA2CF9 /* UIViewController+NibCreatable.swift */; };
 		95C82A1C233BC7B900CA2CF9 /* UIViewController+StoryboardCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C82A1B233BC7B900CA2CF9 /* UIViewController+StoryboardCreatable.swift */; };
 		95C82A1E233BC7D400CA2CF9 /* LogoNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C82A1D233BC7D400CA2CF9 /* LogoNavigationItem.swift */; };
+		DBBFD30824C56C550016340E /* dogs.json in Resources */ = {isa = PBXBuildFile; fileRef = DBBFD30724C56C540016340E /* dogs.json */; };
 		DBD8C23E24C1991D00A13BB3 /* AsynchronousTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD8C23D24C1991D00A13BB3 /* AsynchronousTestCase.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		95C82A18233BC7AD00CA2CF9 /* UIViewController+NibCreatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+NibCreatable.swift"; path = "DogPatch/Extensions/UIViewController+NibCreatable.swift"; sourceTree = SOURCE_ROOT; };
 		95C82A1B233BC7B900CA2CF9 /* UIViewController+StoryboardCreatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+StoryboardCreatable.swift"; path = "DogPatch/Extensions/UIViewController+StoryboardCreatable.swift"; sourceTree = SOURCE_ROOT; };
 		95C82A1D233BC7D400CA2CF9 /* LogoNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoNavigationItem.swift; path = DogPatch/Views/Custom/LogoNavigationItem.swift; sourceTree = SOURCE_ROOT; };
+		DBBFD30724C56C540016340E /* dogs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dogs.json; sourceTree = "<group>"; };
 		DBD8C23B24C1991D00A13BB3 /* DogPatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogPatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD8C23D24C1991D00A13BB3 /* AsynchronousTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousTestCase.swift; sourceTree = "<group>"; };
 		DBD8C23F24C1991D00A13BB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		DBD8C23C24C1991D00A13BB3 /* DogPatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				DBBFD30724C56C540016340E /* dogs.json */,
 				DBD8C23D24C1991D00A13BB3 /* AsynchronousTestCase.swift */,
 				DBD8C23F24C1991D00A13BB3 /* Info.plist */,
 			);
@@ -363,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBBFD30824C56C550016340E /* dogs.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

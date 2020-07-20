@@ -164,4 +164,62 @@ final class AsynchronousTestCase: XCTestCase {
     
     waitForExpectations(timeout: timeout)
   }
+  
+  func test_client() throws {
+    // MARK:  We are already testing the Network call, so no need to test the same network call!
+//    _ = DogPatchClient.shared.getDogs { dogs, error in
+//      defer { self.expectation.fulfill() }
+//
+//      XCTAssertEqual(dogs?.count, 4)
+//      XCTAssertNil(error)
+//    }
+    // MARK: We are already testing the Network call, so no need to test the same network call!
+    
+    struct FakeDataTaskMaker: DataTaskMaker {
+      
+      init() throws {
+        let testBundle = Bundle(for: AsynchronousTestCase.self)
+        let url = try XCTUnwrap(
+          testBundle.url(forResource: "dogs", withExtension: "json")
+        )
+        data = try Data(contentsOf: url)
+      }
+      
+      static let dummyURL: URL = URL(string: "dummy")!
+      let data: Data
+      
+      func dataTask(
+        with url: URL,
+        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
+      ) -> URLSessionDataTask {
+        
+        completionHandler(
+          data,
+          HTTPURLResponse(
+            url: Self.dummyURL,
+            statusCode: 200,
+            httpVersion: nil,
+            headerFields: nil
+          ),
+          nil
+        )
+        final class FakeDataTask: URLSessionDataTask {
+          override init() {}
+        }
+        return FakeDataTask()
+      }
+    }
+    
+    _ = DogPatchClient(
+      baseURL: FakeDataTaskMaker.dummyURL,
+      session: try FakeDataTaskMaker(),
+      responseQueue: nil).getDogs { dogs, error in
+        defer { self.expectation.fulfill() }
+        
+        XCTAssertEqual(dogs?.count, 4)
+        XCTAssertNil(error)
+    }
+    
+    waitForExpectations(timeout: 0)
+  }
 }

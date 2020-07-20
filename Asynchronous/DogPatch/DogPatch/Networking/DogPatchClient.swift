@@ -33,21 +33,30 @@ protocol DogPatchService {
     @escaping ([Dog]?, Error?) -> Void) -> URLSessionDataTask
 }
 
+protocol DataTaskMaker {
+  func dataTask(
+    with url: URL,
+    completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
+  ) -> URLSessionDataTask
+}
+
+extension URLSession: DataTaskMaker { }
+
 class DogPatchClient {
   
   let baseURL: URL
-  let session: URLSession
+  let session: DataTaskMaker
   let responseQueue: DispatchQueue?
   
   static let shared =
   DogPatchClient(
     baseURL: URL(string:
       "https://dogpatchserver.herokuapp.com/api/v1/")!,
-    session: .shared,
+    session: URLSession.shared,
     responseQueue: .main)
   
   init(baseURL: URL,
-       session: URLSession,
+       session: DataTaskMaker,
        responseQueue: DispatchQueue?) {
     self.baseURL = baseURL
     self.session = session
