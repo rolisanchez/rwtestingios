@@ -53,4 +53,14 @@ class DogYearsUITests: XCTestCase {
         XCTAssert(app.navigationBars["Menu"].exists)
         
     }
+    
+    func test_calculatorEntry() {
+        app/*@START_MENU_TOKEN@*/.staticTexts["2"]/*[[".buttons[\"2\"].staticTexts[\"2\"]",".staticTexts[\"2\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.buttons["4"].tap()
+//        app.descendants(matching: .staticText)
+        // Could do it using above, but .staticTexts is shorter
+        XCTAssertEqual(app.staticTexts.matching(identifier: "output").firstMatch.label, "24")
+//        app.staticTexts["24"].tap()
+        
+    }
 }
