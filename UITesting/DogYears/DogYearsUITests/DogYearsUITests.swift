@@ -37,17 +37,32 @@ class DogYearsUITests: XCTestCase {
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
+        
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
-
+    
     func test_navigationBackToMenu() throws {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+        let isPortrait = XCUIDevice.shared.orientation.isPortrait
+        
+        
         //        XCUIApplication().navigationBars["Master"].buttons["Menu"].tap()
         // Extract from above:
-        let masterNavBar = app.navigationBars["Master"]
-        let menuButton = masterNavBar.buttons["Menu"]
-        menuButton.tap()
         
+        let masterNavBar = app.navigationBars["Master"]
+//        let menuButton = masterNavBar.buttons["Menu"]
+//        menuButton.tap()
+        
+        // Verify iPad conditions and landscape
+        switch (isiPad, isPortrait) {
+            case (true, true):
+                print("here")
+                app.navigationBars["DogYears.CalculatorView"].buttons["Master"].tap()
+            case (true, false):
+                break
+            case (false, _):
+                masterNavBar.buttons["Menu"].tap()
+        }
         
         XCTAssertFalse(masterNavBar.exists)
         XCTAssert(app.navigationBars["Menu"].exists)
@@ -57,10 +72,10 @@ class DogYearsUITests: XCTestCase {
     func test_calculatorEntry() {
         app/*@START_MENU_TOKEN@*/.staticTexts["2"]/*[[".buttons[\"2\"].staticTexts[\"2\"]",".staticTexts[\"2\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.buttons["4"].tap()
-//        app.descendants(matching: .staticText)
+        //        app.descendants(matching: .staticText)
         // Could do it using above, but .staticTexts is shorter
         XCTAssertEqual(app.staticTexts.matching(identifier: "output").firstMatch.label, "24")
-//        app.staticTexts["24"].tap()
+        //        app.staticTexts["24"].tap()
         
     }
 }
