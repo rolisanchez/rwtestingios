@@ -21,6 +21,7 @@
 		78EE4CAA1FF2BA8B0028142D /* Mark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EE4CA91FF2BA8B0028142D /* Mark.swift */; };
 		78EE4CAC1FF2E4540028142D /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EE4CAB1FF2E4540028142D /* Errors.swift */; };
 		CA311D2A4D97151B4351867F /* Pods_AppTacToe_Tests_AppTacToeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C40E34D940D2E99EDF793A /* Pods_AppTacToe_Tests_AppTacToeTests.framework */; };
+		DB02EFC424CC177100A3C7D9 /* Board+Nimble.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB02EFC324CC177100A3C7D9 /* Board+Nimble.swift */; };
 		DB4A5CC824C97C89007F06AC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB4A5CC624C97C33007F06AC /* Quick.framework */; };
 		DB4A5CC924C97C8B007F06AC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB4A5CC224C97C20007F06AC /* Nimble.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		78EE4CA91FF2BA8B0028142D /* Mark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mark.swift; sourceTree = "<group>"; };
 		78EE4CAB1FF2E4540028142D /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		89A3665949F11F5C0A1A34F2 /* Pods-AppTacToe-Tests-AppTacToeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTacToe-Tests-AppTacToeTests.debug.xcconfig"; path = "Target Support Files/Pods-AppTacToe-Tests-AppTacToeTests/Pods-AppTacToe-Tests-AppTacToeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DB02EFC324CC177100A3C7D9 /* Board+Nimble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Nimble.swift"; sourceTree = "<group>"; };
 		DB4A5CC224C97C20007F06AC /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4A5CC624C97C33007F06AC /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F22A6F33E315F49009A8A08B /* Pods-AppTacToe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTacToe.release.xcconfig"; path = "Target Support Files/Pods-AppTacToe/Pods-AppTacToe.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				78E528CC20011AC000CB8C9C /* BoardSpec.swift */,
 				78EE4C991FF2B9C20028142D /* Info.plist */,
+				DB02EFC324CC177100A3C7D9 /* Board+Nimble.swift */,
 			);
 			path = AppTacToeTests;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78E528CD20011AC000CB8C9C /* BoardSpec.swift in Sources */,
+				DB02EFC424CC177100A3C7D9 /* Board+Nimble.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,7 +64,9 @@ class BoardSpec: QuickSpec {
                 try! board.play(at: 6)
                 
                 // Assert
-                expect(board.state) == .won(.cross)
+//                expect(board.state) == .won(.cross)
+                // MARK: Replace by custom predicate
+                expect(board).to(beWon(by: .cross))
             }
         }
         context("a move leaving no remaining moves") {
@@ -84,6 +86,28 @@ class BoardSpec: QuickSpec {
                 
                 // Assert
                 expect(board.state) == Board.State.draw
+            }
+        }
+        context("a move that was already played") {
+            it("should throw an error") {
+                try! board.play(at: 0)
+                
+                expect { try board.play(at: 0) }
+                    .to(throwError(Board.PlayError.alreadyPlayed))
+            }
+        }
+        context("a move while the game was already won") {
+            it("should throw an error") {
+                // Arrange
+                try! board.play(at: 0)
+                try! board.play(at: 1)
+                try! board.play(at: 3)
+                try! board.play(at: 2)
+                try! board.play(at: 6)
+                
+                // Act & Assert
+                expect { try board.play(at: 7) }
+                    .to(throwError(Board.PlayError.noGame))
             }
         }
 
